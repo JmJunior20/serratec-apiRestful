@@ -9,18 +9,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class TodoService {
 
-	List<TodoEntity> Lista = new ArrayList<TodoEntity>();
+	List<TodoEntity> lista = new ArrayList<TodoEntity>();
 	
-	public void create(TodoEntity aluno) {
-		Lista.add(aluno);
+	public TodoEntity create(TodoEntity aluno) {
+		lista.add(aluno);
+		return aluno;
 	}
 	
 	public List<TodoEntity> getAll() {
-		return this.Lista;
+		return this.lista;
 	}
 	
 	public TodoEntity procurar(Integer id) {
-		for (TodoEntity element : Lista) {
+		for (TodoEntity element : lista) {
 			if (element.getId() == id) {
 				return element;
 			}
@@ -29,21 +30,29 @@ public class TodoService {
 		return null;
 	}
 	
-	public void update(TodoEntity aluno) {
-		for (TodoEntity element : Lista) {
-			if (element.getId() == aluno.getId()) {
-				element.setNome(aluno.getNome());
-				element.setNota(aluno.getNota());
-			}
+	public TodoEntity update(Integer id, TodoEntity aluno) {
+		for (TodoEntity element : lista) {
+			if (element.getId() == id) {
+				if (aluno.getNome() != null) {
+					element.setNome(aluno.getNome());
+				}
+				if (aluno.getNota() != null) {
+					element.setNota(aluno.getNota());
+				}
+				return element;
+			}			
 		}
+		System.out.println("Não temos tarefas com esse id");
+		return null;
 	}
 	
-	public void delete(Integer id) {
-		for (TodoEntity element : Lista) {
+	public String delete(Integer id) {
+		for (TodoEntity element : lista) {
 			if (element.getId() == id) {
-				Lista.remove(element);
-				break;
+				lista.remove(element);
+				return "Deletado com sucesso";
 			}
 		}
+		return "Id não encontrado";
 	}
 }

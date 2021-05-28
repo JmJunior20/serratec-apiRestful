@@ -21,29 +21,28 @@ public class TodoController {
 	@Autowired
 	TodoService service;
 	
-	@GetMapping()
+	@GetMapping
 	public List<TodoEntity> getAll() {
 		return service.getAll();
 	}
-	
-	@PostMapping()
-	public void criar(@RequestBody TodoEntity aluno) {
-		service.create(aluno);
-	}
-	
+
 	@GetMapping("/{id}")
 	public TodoEntity procurar(@PathVariable Integer id) {
 		return service.procurar(id);
 	}
 	
+	@PostMapping
+	public TodoEntity criar(@RequestBody TodoEntity aluno) {
+		return service.create(aluno);
+	}	
+	
 	@PutMapping("/{id}")
-	public void update(@RequestBody TodoEntity aluno) {
-		service.update(aluno);
+	public TodoEntity update(@PathVariable Integer id, @RequestBody TodoEntity aluno) {
+		return service.update(id, aluno);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
-		service.delete(id);
-	}
-	
+	public String delete(@PathVariable Integer id) {
+		return service.delete(id);
+	}	
 }
