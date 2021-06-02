@@ -1,10 +1,10 @@
-package org.serratec.backend.projeto04;
+package org.serratec.backend.ProjetoCrud02;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Projeto04ApplicationTests {
+class ProjetoCrud02ApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.serratec.backend</groupId>
-	<artifactId>projeto04</artifactId>
+	<artifactId>ProjetoCrud02</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>projeto04</name>
-	<description>Projeto 04</description>
+	<name>ProjetoCrud02</name>
+	<description>Porjeto Crud de uma conta</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
