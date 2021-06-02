@@ -7,6 +7,7 @@ import org.com.serratec.backend.Projeto04.entity.BookEntity;
 import org.com.serratec.backend.Projeto04.exceptions.BookNotFoundException;
 import org.com.serratec.backend.Projeto04.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,8 +17,8 @@ public class BookService {
 	@Autowired
 	BookRepository repository;
 	
-	public List<BookEntity> findAll() {
-		return repository.findAll();
+	public List<BookEntity> findAll(String ordem) {
+		return repository.findAll(Sort.by(ordem));
 	}
 	
 	public BookEntity findById(Long id) throws BookNotFoundException {
