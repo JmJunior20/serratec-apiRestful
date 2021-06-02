@@ -2,7 +2,7 @@ package org.com.serratec.backend.Projeto04.controller;
 
 import java.util.List;
 
-import org.com.serratec.backend.Projeto04.entity.BookEntity;
+import org.com.serratec.backend.Projeto04.dto.BookDTO;
 import org.com.serratec.backend.Projeto04.exceptions.BookNotFoundException;
 import org.com.serratec.backend.Projeto04.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,23 +26,23 @@ public class BookController {
 	BookService service;
 	
 	@GetMapping
-	public ResponseEntity<List<BookEntity>> getAll(@RequestParam(name= "ordenar", required = false, defaultValue = "id") String ordem) {
-		return new ResponseEntity<List<BookEntity>>(service.findAll(ordem), HttpStatus.OK);
+	public ResponseEntity<List<BookDTO>> getAll(@RequestParam(name= "ordenar", required = false, defaultValue = "id") String ordem) {
+		return new ResponseEntity<List<BookDTO>>(service.findAll(ordem), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<BookEntity> getBuId(@PathVariable long id) throws BookNotFoundException {
-		return new ResponseEntity<BookEntity>(service.findById(id), HttpStatus.OK);
+	public ResponseEntity<BookDTO> getBuId(@PathVariable long id) throws BookNotFoundException {
+		return new ResponseEntity<BookDTO>(service.findById(id), HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public ResponseEntity<BookEntity> create(@RequestBody BookEntity entity) {
-		return new ResponseEntity<BookEntity>(service.create(entity), HttpStatus.CREATED);
+	public ResponseEntity<BookDTO> create(@RequestBody BookDTO dto) {
+		return new ResponseEntity<BookDTO>(service.create(dto), HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<BookEntity> update(@PathVariable Long id, @RequestBody BookEntity entity) throws BookNotFoundException {
-		return new ResponseEntity<BookEntity>(service.update(id, entity), HttpStatus.OK);
+	public ResponseEntity<BookDTO> update(@PathVariable Long id, @RequestBody BookDTO dto) throws BookNotFoundException {
+		return new ResponseEntity<BookDTO>(service.update(id, dto), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
